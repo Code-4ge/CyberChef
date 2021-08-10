@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.css"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <title>CyberChef | Blogs on Digital Security</title>
+</head>
+<body>
+    <header>
+        <div class="nav_bar">
+            <div class="container">
+                <a href="/">    
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" id="logo">
+                </a>
+                <span>
+                    <input type="checkbox" id="toggle" onclick="classToggle()">
+                    <label for="toggle" id="toggl_label">&#9776;</label>
+                </span>
+
+    {% block body %}
+    {% endblock %}
+
+
+    <footer class="footer_container">
+        <div class="footer_text">
+            <div id="company">
+                <img src="{{ url_for('static', filename='img/logo.png')}}"><br>
+                <span>Copyright &copy; 2021 - CyberChef</span><br>
+                <a href="/post">Posts</a><br>
+                <a href="/privacy_policy">Our Privacy Policy</a><br>
+                <a href="/terms_and_conditions">Terms & Conditions</a><br>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <div id="resources">
+                <strong>Quick Links</strong><br>
+                <a href="/resources">Free Books</a><br>
+                <a href="/resources">Practice Links</a><br>
+                <a href="/contact">Suggestion</a>
+            </div>
+            <div id="s_btn">
+                <strong>Stay Connected</strong><br>
+                <a href="https://www.facebook.com/neeraj.panmand.9" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/neerajpanmand" target="_blank">
+                    <i class="fab fa-instagram"></i>         
+                </a>
+                <a href="https://in.linkedin.com/in/neeraj-panmand" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Neeraj27200" target="_blank">
+                    <i class="fab fa-github"></i>                       
+                </a>
+                <a href="mailto:cyberchef@usako.net" target="_blank">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/home.js')}}"></script>
+</body>
+</html>

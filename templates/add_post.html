@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberChef: Add Posts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+	<header class="header">
+        <a class="logo" href="/"><img src="{{url_for('static', filename='img/Llogo.png')}}" alt="Logo"></a>
+        <div class="toggle_bar">
+            <input type="checkbox" id="toggle" onclick="classToggle()">
+            <label for="toggle" id="toggle_label">&#9776;</label>
+        </div>
+        <div class="page_name">
+            <h1 onclick="window.open('/admin_loginauthenticate/dashboard', '_self');">Dashboard</h1>
+        </div>
+        <div class="logout">
+            <a href="/admin_loginauthenticate/dashboard/logout">Sign out</a>
+        </div>
+    </header>
+	<div class="d-flex">    
+        <nav id="sidebarMenu" class="menu">
+            <div class="menu_content">
+                <ul class="menu_list">
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard" >
+                            <span><i class="fas fa-home"></i></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/books">
+                            <span><i class="fas fa-book"></i></span>
+                            E-Books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/grievance">
+                            <span><i class="fas fa-users"></i></span>
+                            Grievance
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="/admin_loginauthenticate/dashboard/addpost">
+                            <span><i class="fas fa-plus-circle"></i></span>
+                            Add Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/addresource">
+                            <span><i class="fas fa-book-medical"></i></span>
+                            Add Books
+                        </a>
+                    </li>
+                    <li>
+                        <a style="color: grey">
+                            <span><i class="fas fa-bullhorn"></i></span>
+                            Announcements
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/logout">
+                            <span><i class="fas fa-lock"></i></span>
+                            Sign out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="main_body" style="padding-top: 0px;">
+        	<div class="posts" style="padding-top: 0px;">
+        	    <p>Add Post</p>
+        		<div class="table">
+					<form action="/admin_loginauthenticate/dashboard/addpost" method="post" enctype="multipart/form-data">
+						<input type="text" name="title" id="title" placeholder="Title" required><br>
+						<input type="text" name="sub_title" id="sub_title" placeholder="Sub Title" required><br>
+						<input type="text" name="slug" id="slug" placeholder="Slug" required><br>
+						<textarea name="msg" id="msg" placeholder="Contents" required></textarea><br>
+						<input type="file" name="inputfile" id="file" required><br>
+						{% if error %}
+							<span style="font-size: 15px; color: red;">{{error}}</span><br>
+						{% endif %}
+						<button type="submit" id="btn"><b>POST</b></button>
+					</form>
+        		</div>
+        	</div>
+        </main>
+	</div>
+</body>
+</html>

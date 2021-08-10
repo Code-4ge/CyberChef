@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.css"> 
+    <title>CyberChef | Contacts</title>
+</head>
+<body>
+    <header>
+        <div class="nav_bar">
+            <div class="container">
+                <a href="/">    
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" id="logo">
+                </a>
+                <span>
+                    <input type="checkbox" id="toggle" onclick="classToggle()">
+                    <label for="toggle" id="toggl_label">&#9776;</label>
+                </span>
+                <div class="menu">
+                    <a href="/">Home</a>
+                    <a href="/resources">Resources</a>
+                    <a href="/post">Posts</a>
+                    <a href="/contact"><span>Contact</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="rmenu">
+            <a href="/">Home</a><br><hr>
+            <a href="/resources">Resources</a><br><hr>
+            <a href="/post">Posts</a><br><hr>
+            <a href="/contact"><span>Contact</span></a><br>
+        </div>
+    </header>
+    <main>
+        <section class="tag" style="text-decoration: underline; text-decoration-style: solid;">
+            <center>Contact Us</center>
+        </section>           
+        <div class="info">
+            <form action="/contact" method="post">
+                <input type="text" name="name" id="name" placeholder="Full Name" required><br>
+                <input type="email" name="email" id="email" placeholder="Email" required><br>
+                <input type="tel" name="phone" id="phone" placeholder="Phone No." required><br>
+                <textarea name="msg" id="msg" placeholder="Message" required></textarea><br>
+                <button type="submit" id="btn"><b>SEND</b></button>
+            </form>
+        </div>
+    </main>
+    <footer class="footer_container">
+        <div class="footer_text">
+            <div id="company">
+                <img src="{{ url_for('static', filename='img/logo.png')}}"><br>
+                <span>Copyright &copy; 2021 - CyberChef</span><br>
+                <a href="/post">Posts</a><br>
+                <a href="/privacy_policy">Our Privacy Policy</a><br>
+                <a href="/terms_and_conditions">Terms & Conditions</a><br>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <div id="resources">
+                <strong>Quick Links</strong><br>
+                <a href="/resources">Free Books</a><br>
+                <a href="/resources">Practice Links</a><br>
+                <a href="/contact">Suggestion</a>
+            </div>
+            <div id="s_btn">
+                <strong>Stay Connected</strong><br>
+                <a href="https://www.facebook.com/neeraj.panmand.9" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/neerajpanmand" target="_blank">
+                    <i class="fab fa-instagram"></i>         
+                </a>
+                <a href="https://in.linkedin.com/in/neeraj-panmand" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Neeraj27200" target="_blank">
+                    <i class="fab fa-github"></i>                       
+                </a>
+                <a href="mailto:cyberchef@usako.net" target="_blank">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/home.js')}}"></script>
+</body>
+</html>

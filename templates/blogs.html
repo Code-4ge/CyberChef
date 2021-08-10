@@ -1,0 +1,65 @@
+{% extends "layout.html" %} 
+{% block body %}
+
+                <div class="menu">
+                    <a href="/"><span>Home</span></a>
+                    <a href="/resources">Resources</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="rmenu">
+            <a href="/"><span>Home</span></a><br>
+            <hr>
+            <a href="/resources">Resources</a><br>
+            <hr>
+            <a href="/about">About</a><br>
+            <hr>
+            <a href="/contact">Contact</a><br>
+        </div>
+    </header>
+    <div class="share">
+        <span>SHARE</span>
+        <div id="line"></div>
+        <a href="https://t.me/share/url?url=Your_url&text=Message" target="_blank">
+            <i class="fab fa-telegram-plane"></i>         
+        </a><br>
+        <a href="https://wa.me/?text=Your_url With Message" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a><br>
+        <a href="https://github.com/Neeraj27200" target="_blank">
+            <i class="far fa-copy"></i>                       
+        </a>
+    </div>
+    <main>
+        <div class="headers" style="background: linear-gradient(45deg, rgba(2, 7, 27, 0.6), rgba(0, 13, 57, 0.6), rgba(75, 11, 87, 0.6), rgba(4, 10, 42, 0.6)), url({{url_for('static', filename='img/post/' + posts.Image)}});">
+            <p>
+                <strong><span>{{posts.Title}}</span></strong><br>by CyberChef on {{posts.Date.strftime('%B %d, %Y %H:%M')}}
+            </p>
+        </div>
+        <div class="grid_col">
+            <div class="content">
+                
+                    {{posts.Content | safe}}
+                
+            </div>
+            <div class="recent">
+                FEATURED POSTS
+                {% for post in f_Post %} 
+                    <a href="/blogs/{{post.Slug}}">
+                        <div class="post">
+                            {% if loop.index < 10 %}
+                                <section id="num">0{{loop.index}}</section>  
+                            {% else %}
+                                <section id="num">{{loop.index}}</section>
+                            {% endif %}
+                            <section id="blog">{{post.Title[0:23]}}...<br/><span>{{post.Date.strftime('%B %d, %Y')}}</span></section>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

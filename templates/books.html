@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberChef: E-Books</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+	<header class="header">
+        <a class="logo" href="/"><img src="{{url_for('static', filename='img/Llogo.png')}}" alt="Logo"></a>
+        <div class="toggle_bar">
+            <input type="checkbox" id="toggle" onclick="classToggle()">
+            <label for="toggle" id="toggle_label">&#9776;</label>
+        </div>
+        <div class="page_name">
+            <h1 onclick="window.open('/admin_loginauthenticate/dashboard', '_self');">Dashboard</h1>
+        </div>
+        <div class="logout">
+            <a href="/admin_loginauthenticate/dashboard/logout">Sign out</a>
+        </div>
+    </header>
+    <div class="d-flex">    
+        <nav id="sidebarMenu" class="menu">
+            <div class="menu_content">
+                <ul class="menu_list">
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard" >
+                            <span><i class="fas fa-home"></i></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="/admin_loginauthenticate/dashboard/books">
+                            <span><i class="fas fa-book"></i></span>
+                            E-Books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/grievance">
+                            <span><i class="fas fa-users"></i></span>
+                            Grievance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/addpost">
+                            <span><i class="fas fa-plus-circle"></i></span>
+                            Add Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/addresource">
+                            <span><i class="fas fa-book-medical"></i></span>
+                            Add Books
+                        </a>
+                    </li>
+                    <li>
+                        <a style="color: grey">
+                            <span><i class="fas fa-bullhorn"></i></span>
+                            Announcements
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/logout">
+                            <span><i class="fas fa-lock"></i></span>
+                            Sign out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="main_body" style="padding-top: 0px;">
+        	<div class="posts" style="padding-top: 0px;">
+        		<p>E-Books &nbsp;&nbsp;<span style="color: #c0c0c0">[<span id="num"></span>]</span></p>
+        		<div class="table">
+        			<table class="table_elements">
+				        <thead>
+				            <tr>
+					            <th>Sr No.</th>
+					            <th>Name</th>
+					            <th>Author</th>
+					            <th>Details</th>
+                                <th>Categories</th>
+					            <th>Action</th>
+				            </tr>
+				        </thead>
+                        <tbody class="size">
+                            {% for file in files %}
+                                <tr>
+                                    {% if loop.index < 10 %}
+                                        <td>0{{loop.index}}</td>  
+                                    {% else %}
+                                        <td>{{loop.index}}</td>
+                                    {% endif %}
+                                    <td onclick="alert('Image : {{file.Images}}')">{{file.Book_Name}}</td>
+                                    <td>{{file.Author}}</td>
+                                    <td>{{file.Pages}} Pg.&nbsp;|&nbsp;{{file.Size}} MB</td>
+                                    <td>{{file.Categories}}</td>
+                                    <td><a href="/admin_loginauthenticate/dashboard/books/del/{{file.Srno}}"><i id="del" class="far fa-trash-alt"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+				    </table>
+        		</div>
+        	</div>
+        </main>
+	</div>
+    <script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+</body>
+</html>

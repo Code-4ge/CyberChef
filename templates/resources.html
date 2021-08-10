@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block body %}
+
+                <div class="menu">
+                    <a href="/">Home</a>
+                    <a href="/resources"><span>Resources</span></a>
+                    <a href="/post">Posts</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="rmenu">
+            <a href="/">Home</a><br><hr>
+            <a href="/resources"><span>Resources</span></a><br><hr>
+            <a href="/post">Posts</a><br><hr>
+            <a href="/contact">Contact</a><br>
+        </div>
+    </header>
+    <main class="container res_contain">
+        <div class="books">
+            <form action="/resources" method="POST">
+                <input type="submit" value="&#x1F50D">
+                <input type="search" id="searchit" list="categories" name="search" placeholder='How may I help you?'>
+                <datalist id="categories">
+                        <option value="All"></option>
+                    {% for lists in categorys %}
+                        <option value="{{lists}}"></option>
+                    {% endfor %}
+                </datalist>
+            </form>
+            <div class="book_list">
+                {% if Books %}
+                    {% for book in Books %}                
+                        <div id="book">
+                            <a href="/resources/preview/{{book.Book}}" target="_blank">
+                                <img src="{{url_for('static', filename='img/resource/' + book.Images)}}" alt="Book Cover">
+                            </a>
+                            <div class="sec">
+                                <h3>{{book.Book_Name}}</h3>
+                                <p>&#9866;by {{book.Author}}</p>
+                                <p>{{book.Details}}</p>
+                                <div class="book_spec">
+                                    <p>{{book.Pages}} Pages&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{{book.Size}} MB</p>
+                                    <a href="{{url_for('static', filename='img/resource/files/' + book.Book)}}" download>
+                                        <button>DOWNLOAD</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div id="empty">
+                        <p>SORRY :(  Not Found</p>
+                    </div>
+                {% endif %}
+            </div>
+            {% if trace %}
+            <div class="trace_pages">
+                <a id="next" href="{{prev}}">&lArr; Previous</a>
+                <a id="prev" href="{{next}}">Next &rArr;</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="links">
+            <div class="category_contain">
+                CATEGORIES
+                <table class="categories">
+                    <form action="/resources" method="post">
+                    <tr>
+                        <td><a href=""><img src="{{url_for('static', filename='img/hacking.png')}}"><span>&nbsp;<input type="submit" name="search" value="Ethical Hacker"></span></a></td>
+                        <td><a href=""><img src="{{url_for('static', filename='img/cybersecurity.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Computer Security"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href=""><img src="{{url_for('static', filename='img/crypto.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Crypto"></span></a></td>
+                        <td><a href=""><img src="{{url_for('static', filename='img/applicationsecurity.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Application Security"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href=""><img src="{{url_for('static', filename='img/websecurity.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Web Pentesting"></span></a></td>
+                        <td><a href=""><img src="{{url_for('static', filename='img/cloudsecurity.jpeg')}}"><span>&nbsp;<input type="submit" name="search" value="Cloud Security"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href=""><img src="{{url_for('static', filename='img/networksecurity.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Network Security"></span></a></td>          
+                        <td><a href=""><img src="{{url_for('static', filename='img/coding.png')}}"><span>&nbsp;<input type="submit" name="search" value="Coding"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href=""><img src="{{url_for('static', filename='img/hacktivity.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Hacktivity"></span></a></td>
+                        <td><a href=""><img src="{{url_for('static', filename='img/miscellaneous.jpg')}}"><span>&nbsp;<input type="submit" name="search" value="Miscellaneous"></span></a></td>
+                    </tr>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberChef: Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+</head>
+<body>
+	<header class="header">
+        <a class="logo" href="/"><img src="{{url_for('static', filename='img/Llogo.png')}}" alt="Logo"></a>
+        <div class="toggle_bar">
+            <input type="checkbox" id="toggle" onclick="classToggle()">
+            <label for="toggle" id="toggle_label">&#9776;</label>
+        </div>
+        <div class="page_name">
+            <h1 onclick="window.open('/admin_loginauthenticate/dashboard', '_self');">Dashboard</h1>
+        </div>
+        <div class="logout">
+            <a href="/admin_loginauthenticate/dashboard/logout">Sign out</a>
+        </div>
+    </header>
+	<div class="d-flex">    
+        <nav id="sidebarMenu" class="menu">
+            <div class="menu_content">
+                <ul class="menu_list">
+                    <li>
+                        <a class="active" href="/admin_loginauthenticate/dashboard" >
+                            <span><i class="fas fa-home"></i></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/books">
+                            <span><i class="fas fa-book"></i></span>
+                            E-Books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/grievance">
+                            <span><i class="fas fa-users"></i></span>
+                            Grievance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/addpost">
+                            <span><i class="fas fa-plus-circle"></i></span>
+                            Add Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/addresource">
+                            <span><i class="fas fa-book-medical"></i></span>
+                            Add Books
+                        </a>
+                    </li>
+                    <li>
+                        <a style="color: grey">
+                            <span><i class="fas fa-bullhorn"></i></span>
+                            Announcements
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin_loginauthenticate/dashboard/logout">
+                            <span><i class="fas fa-lock"></i></span>
+                            Sign out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="main_body">
+        	<div class="content">
+        		<a onclick="window.open('/admin_loginauthenticate/dashboard/addpost','_self')" style="text-decoration: none;">
+	        		<div class="card card_effect">
+	        			<i id="effect" class="fas fa-plus"></i>&nbsp;&nbsp;Add Post
+	        			<p id="effect">Total Posts : <span id="num"></span></p>
+	        		</div>        			
+        		</a>
+        		<div class="card">
+        			<i class="far fa-eye"></i>&nbsp;&nbsp;Views
+	        		<p><span>--</span></p>
+        		</div>
+        		<div class="card">
+        			<i class="far fa-thumbs-up"></i>&nbsp;&nbsp;Likes
+	        		<p><span>--</span></p>
+        		</div>
+        	</div>
+        	<div class="posts">
+        		<p>Posts List</p>
+        		<div class="table">
+        			<table class="table_elements">
+				        <thead>
+				            <tr>
+					            <th>Sr No.</th>
+					            <th>Title</th>
+					            <th>Tag Line</th>
+					            <th>Date</th>
+					            <th>Action</th>
+				            </tr>
+				        </thead>
+                        <tbody>
+                            {% for p_table in post_table %}
+                                <tr>
+                                    {% if loop.index < 10 %}
+                                        <td>0{{loop.index}}</td>  
+                                    {% else %}
+                                        <td>{{loop.index}}</td>
+                                    {% endif %}
+                                    <td onclick="alert('Image : {{p_table.Image}}\nUrl : {{p_table.Slug}}');">{{p_table.Title}}</td>
+                                    <td>{{p_table.Sub_title}}</td>
+                                    <td>{{p_table.Date.strftime('%d-%m-%y %H:%M')}}</td>
+                                    <td><a href="/admin_loginauthenticate/dashboard/edt/{{p_table.Slug}}"><i id="edt" class="fas fa-pencil-alt"></i></a>&nbsp;&nbsp;&nbsp;<a href="/admin_loginauthenticate/dashboard/del/{{p_table.Slug}}"><i id="del" class="far fa-trash-alt"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+				    </table>
+        		</div>
+        	</div>
+        </main>
+	</div>
+	<script src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+</body>
+</html>

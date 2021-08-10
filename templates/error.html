@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberChef | Error!!!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        html{
+            background-image: url("{{url_for('static', filename='img/errorbg.png')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            font-family: 'Kanit', sans-serif;
+        }
+        .code{
+            cursor: default;
+            text-align: center;
+            color: grey !important;
+        }
+        .code span{
+            font-size: 200px;
+            font-weight: bolder;
+            color: #590668;
+            text-shadow: aqua 8px 5px 3px ;
+        }
+        .code h1{
+            margin-top: -20px;
+            font-weight: bolder;
+            color: black;
+        }
+        .code p{
+            font-size: 15px;
+            margin-top: 10px;
+            font-weight: lighter;
+            letter-spacing: 1px;
+        }
+        .code p a{
+            font-weight: bold;
+            text-decoration: none;
+            color: blueviolet;
+        }
+        .code button{
+            cursor: pointer;
+            height: 40px;
+            padding: 10px 15px;
+            margin-top: 20px;
+            border: 2px solid blueviolet;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+            background-color: blueviolet;
+        }
+        .code button:hover{
+            color: blueviolet;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="code">
+        <span>{{error}}</span>
+        <h1>{{head}}</h1>
+        <p>
+            {{tail}} <br>You can contact our <a href='/contact'>Help Center</a>&nbsp;for more Information.
+        </p>
+        <button onclick="window.open('/','_self')">BACK TO HOMEPAGE</button>
+    </div>
+</body>
+</html>

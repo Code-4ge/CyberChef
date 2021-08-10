@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.css"> 
+    <title>CyberChef | Blogs on Digital Security</title>
+</head>
+<body>
+    <header>
+        <div class="nav_bar">
+            <div class="container">
+                <a href="/">    
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" id="logo">
+                </a>
+                <span>
+                    <input type="checkbox" id="toggle" onclick="classToggle()">
+                    <label for="toggle" id="toggl_label">&#9776;</label>
+                </span>
+                <div class="menu">
+                    <a href="/"> <span>Home</span></a>
+                    <a href="/resources">Resources</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="rmenu">
+            <a href="/"> <span>Home</span></a><br><hr>
+            <a href="/resources">Resources</a><br><hr>
+            <a href="/about">About</a><br><hr>
+            <a href="/contact">Contact</a><br>
+        </div>
+        <div class="heading">
+            <p>
+                <h1>CYBER SECURITY</h1>
+                <h4 id="tech">BLOGS</h4>
+                <h5 id="slogan">Blogs for <span>Cyber-Hunter</span>.<br>Don't Learn to Hack - Hack to Learn.<br><span>'Ctrl + Alt + Delete'</span></h5>
+            </p>
+            <button id="btn"><a href="/resources">Get Started</a></button>
+        </div>
+    </header>
+    <main class="grid-col">
+        <div class="content">
+            <form action="/" method="POST">
+                <label for="searchit"><input type="submit" value="&#x1F50D"></label>
+                <input type="search" id="searchit" list="categories" name="search" placeholder='Search by "Keyword"'>
+                <datalist id="categories">
+                        <option value="All"></option>
+                    {% for list in categorys %}
+                        <option value="{{list}}"></option>
+                    {% endfor %}
+                </datalist>
+            </form>
+            {% if posts %}
+                {% for post in posts %}
+                <a href="/blogs/{{post.Slug}}">
+                    <div class="post_title">
+                        <h2>{{post.Title}}</h2>
+                        <p id="date">Published on {{post.Date.strftime('%B %d, %Y')}}</p>
+                        <p>{{post.Content[0:200] | cleantag}}.....</p>
+                    </div>
+                </a>
+                <hr> 
+                {% endfor %}
+            {% else %}
+                <div id="empty">
+                    <p>SORRY :(  Not Found</p>
+                </div>
+            {% endif %}
+
+            {% if trace %}
+                <div class="trace_pages">
+                    <a id="next" href="{{prev}}">&lArr; Previous</a>
+                    <a id="prev" href="{{next}}">Next &rArr;</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="posts">
+            <div class="quick">
+                QUICK LINKS
+                <a href="/resources">
+                    <div class="link">
+                        <i class="fas fa-book"></i>&nbsp; Free Books&nbsp;&nbsp;&nbsp; <i class="fas fa-angle-right"></i>
+                    </div>
+                </a>
+                <a href="/resources">
+                    <div class="link">
+                        <i class="fas fa-link"></i>&nbsp;  Practice Links&nbsp;&nbsp;&nbsp; <i class="fas fa-angle-right"></i>
+                    </div>
+                </a>
+                <a href="/contact">
+                    <div class="link">
+                        <i class="fas fa-file-alt"></i>&nbsp; Suggestion&nbsp;&nbsp;&nbsp; <i class="fas fa-angle-right"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="recent">
+                FEATURED POSTS
+                {% for post in f_Post %} 
+                    <a href="/blogs/{{post.Slug}}">
+                        <div class="post">
+                            {% if loop.index < 10 %}
+                                <section id="num">0{{loop.index}}</section>  
+                            {% else %}
+                                <section id="num">{{loop.index}}</section>
+                            {% endif %}
+                            <section id="blog">{{post.Title[0:23]}}...<br/><span>{{post.Date.strftime('%B %d, %Y')}}</span></section>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    <footer class="footer_container">
+        <div class="footer_text">
+            <div id="company">
+                <img src="{{ url_for('static', filename='img/logo.png')}}"><br>
+                <span>Copyright &copy; 2021 - CyberChef</span><br>
+                <a href="/post">Posts</a><br>
+                <a href="/privacy_policy">Our Privacy Policy</a><br>
+                <a href="/terms_and_conditions">Terms & Conditions</a><br>
+                <a href="/contact">Contact Us</a>
+            </div>
+            <div id="resources">
+                <strong>Quick Links</strong><br>
+                <a href="/resources">Free Books</a><br>
+                <a href="/resources">Practice Links</a><br>
+                <a href="/contact">Suggestion</a>
+            </div>
+            <div id="s_btn">
+                <strong>Stay Connected</strong><br>
+                <a href="https://www.facebook.com/neeraj.panmand.9" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/neerajpanmand" target="_blank">
+                    <i class="fab fa-instagram"></i>         
+                </a>
+                <a href="https://in.linkedin.com/in/neeraj-panmand" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Neeraj27200" target="_blank">
+                    <i class="fab fa-github"></i>                       
+                </a>
+                <a href="mailto:cyberchef@usako.net" target="_blank">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/home.js')}}"></script>
+</body>
+</html>

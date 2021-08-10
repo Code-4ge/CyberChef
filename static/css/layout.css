@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+/* header section style start here */
+.container {
+    margin-left: 70px;
+    margin-right: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_bar {
+    position: fixed;
+    width: 100%;
+    height: fit-content;
+    line-height: 25px;
+    background: -webkit-linear-gradient(45deg, #02071b, #000d39, #4b0b57, #040a2a);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.footer_text img,
+#logo {
+    width: 260px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.menu a {
+    color: white;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.menu {
+    width: 410px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#toggle {
+    display: none;
+}
+
+#toggle,
+#toggl_label {
+    font-size: 35px;
+    line-height: 50px;
+    color: whitesmoke;
+    cursor: pointer;
+    display: none;
+}
+
+.rmenu {
+    position: fixed;
+    width: 100%;
+    height: fit-content;
+    margin-top: 55px;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #02081f;
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.rmenu a {
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.menu a span,
+.rmenu a span {
+    color: #43f8f9;
+}
+
+.menu a:hover,
+.rmenu a:hover {
+    transform: scale(1.1);
+    color: #43f8f9;
+}
+
+.ToggleShow {
+    display: block;
+}
+
+hr {
+    width: 80%;
+    border: none;
+    background-color: #490b56;
+    margin-left: 10%;
+    height: 3px;
+    border-radius: 100%;
+}
+/* end header section */
+
+.share{
+    position: fixed;
+    width: 40px;
+    height: fit-content;
+    top: 40%;
+    bottom: auto;
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 5px;
+    background-color: #490b56;
+}
+
+.share span{
+    font-size: 12px;
+    font-weight: bold;
+    font-family:'Roboto Condensed', monospace;
+    color: whitesmoke;
+}
+
+#line{
+    margin-bottom: 5px;
+    width: 100% ;
+    height: 1px ; 
+    border: none ; 
+    background-color: gray ;
+}
+
+.share a i{
+    text-decoration: none;
+    color: whitesmoke;
+    margin: 8px 0;
+}
+
+/* main body style starts here */
+
+/* styling of blog pages */
+.headers {
+    width: 100%;
+    height: 350px;
+    padding-top: 80px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 10px rgba(99, 96, 96, 0.74);
+}
+.headers p {
+    margin: 0 100px;
+    line-height: 50px;
+    color: grey;
+    text-align: center;
+    font-size: 17px;
+    font-family: 'MuseoModerno', monospace;
+}
+.headers strong {
+    color: white;
+    font-size: 40px;
+}
+
+.content{
+    font-size: 20px;
+    font-family:'Roboto Condensed', monospace;
+    margin: 50px 100px;
+    text-align: justify;
+    color: #636363;
+}
+
+.content h1{
+    color: #5a2a82;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+.content h2{
+    color: #5a2a82;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.content h3{
+    color: #5a2a82;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.content ol,
+.content ul{
+    margin-left: 20px;
+}
+.content ol li,
+.content ul li{
+    margin-top: 10px;
+}
+
+.grid_col{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.recent{
+    width: 100%;
+    height: fit-content;
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    line-height: 35px;
+    color: limegreen;
+}
+
+.recent a{
+    text-decoration: none;
+}
+
+.recent{
+    margin-top: 125px;
+}
+
+.recent .post{
+    width: 360px;
+    margin-top: 30px;
+    padding: 15px 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    text-align: left; 
+    justify-content: left;
+    border-radius: 5px;
+}
+
+#num{
+    font-size: 45px;
+    font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+    color: grey;
+}
+
+#blog{
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: black;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+
+#blog span{
+    font-size: 12px;
+    color: grey;
+}
+
+/* styling of resources page */
+.res_contain{
+    padding-top: 120px;
+    flex-wrap: wrap;
+}
+
+.books{
+    width: 65%;
+    text-align: center;
+}
+
+.book_list{
+    width: auto;
+    margin: 60px 60px 40px 0;
+}
+
+#book{
+    width: 100%;
+    height: fit-content;
+    margin: 20px 0;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    text-align: left;
+    background-color: white;
+}
+
+#book:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#book a img{
+    cursor: pointer;
+    width: 110px;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#book .sec{
+    width: auto;
+    margin: 15px 0 10px 15px;
+}
+
+#book .sec h3{
+    font-size: 20px;
+}
+
+#book .sec p{
+    margin-top: 5px;
+    font-size: 12px;
+    color: grey;
+}
+
+#book .book_spec{
+    margin-top: 10px;
+    padding: 0 30px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#book .book_spec p{
+    font-size: 15px;
+    color: black;
+}
+
+#book .book_spec a button{
+    width: 120px;
+    height: 30px;
+    font-weight: bolder;
+    color: #8c0ea5;
+    background-color: white;
+    border: 2px solid #8c0ea5;
+    border-radius: 15px;
+}
+
+#book .book_spec a button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #8c0ea5;
+}
+
+#empty{
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #d8d8d8 ;
+    background-color: transparent ;
+    border: none ;
+    box-shadow: transparent ;
+}
+
+.trace_pages{
+    text-align: left;
+}
+
+#prev, #next{
+    padding: 10px;
+    margin-right: 20px;
+    color: white;
+    background-color: #8c0ea5;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.links{
+    width: 35%;
+    height: fit-content;
+}
+
+#searchit{
+    width: 80%;
+    height: 50px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 0 15px 0 15px;
+    border: 1px solid grey;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.books input[type="submit"]{
+    width: 50px;
+    height: 50px;
+    margin: 10px -5px 0 0;
+    font-size: 14px;
+    border: none;
+    background-color:rebeccapurple;   
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.category_contain{
+    width: 100%;
+    height: fit-content;
+    margin-top: 100px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: limegreen;
+}
+
+.categories{
+    width: 100%;
+    margin-top: 20px;
+    border-spacing: 0;
+}
+
+.categories a{
+    width: max-content;
+    display: flex;
+    font-size: 17px;
+    color: black;
+    letter-spacing: 1px;
+    text-decoration: none;
+    margin: 15px 25px 15px 0;
+}
+
+.categories a span input{
+    cursor: pointer;
+    line-height: 35px;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+}
+
+.categories img{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+/* styling of privacy & terms page */
+.privacy_contain{
+    font-family: sans-serif;
+    font-size: 19px;
+    color: black;
+    padding-top: 120px;
+    margin: 0 100px 50px 100px;
+}
+.privacy_contain h1{
+    margin-top: 30px;
+}
+.privacy_contain h2{
+    margin-top: 20px;
+}
+.privacy_contain h3{
+    margin-top: 15px;
+}
+.privacy_contain p{
+    margin-top: 10px;
+    color: rgb(68, 67, 67);
+}
+.privacy_contain ul{
+    margin-left: 20px;
+    color: rgb(68, 67, 67);
+}
+
+/* end main body */
+
+
+/* footer body style starts here */
+
+.footer_container {
+    margin-top: 50px;
+    padding-top: 30px;
+}
+
+.footer_text {
+    padding: 30px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    text-align: center;
+    font-family: sans-serif;
+    background: -webkit-linear-gradient(45deg, #02071b, #000d39, #4b0b57, #040a2a);
+    color: white;
+}
+
+.footer_text span {
+    font-size: 9px;
+    color: rgb(179, 179, 179);
+}
+
+.footer_text strong {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer_text a {
+    font-size: 15px;
+    line-height: 25px;
+    color: rgb(179, 179, 179);
+    text-decoration: none;
+}
+
+#company a:hover,
+#resources a:hover {
+    color: white;
+}
+
+#resources,
+#s_btn {
+    margin-top: 30px;
+}
+
+#s_btn a {
+    font-size: 25px;
+    margin: 0 15px;
+    line-height: 60px;
+    transition: 0.2s linear;
+}
+
+#s_btn a:nth-of-type(1):hover {
+    color: #3b5998;
+}
+
+#s_btn a:nth-of-type(2):hover {
+    color: #c32aa3;
+}
+
+#s_btn a:nth-of-type(3):hover {
+    color: #0077B5;
+}
+
+#s_btn a:nth-of-type(4):hover {
+    color: #131418;
+}
+
+#s_btn a:nth-of-type(5):hover {
+    color: #db4437;
+}
+
+/* end footer body */
+
+
+
+

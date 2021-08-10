@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <title>CyberChef | Sign In</title>
+</head>
+<body>
+    <main class="container">
+        <a href="/">
+            <img src="{{url_for('static', filename='img/Llogo.png')}}" alt="logo">
+        </a>
+        <div class="page">
+            <form action="/admin_loginauthenticate" method="POST">
+                <h1>Sign In</h1>
+                <input type="text" name="userid" id="user" placeholder="Username" required autofocus><br>
+                <input type="password" name="pass" id="password" placeholder="Password" required><br>
+                <p><a onclick="alert('Sorry!! Then you are not allowed to LOGIN...'); window.open('/','_self');">Forgot Password ?</a></p>
+                {% if InValid %}
+                    <span id="error">Invalid Username/Password</span>
+                {% endif %}
+                <input type="submit" value="Login"><br>
+                <p>Don't Have Account? <a onclick="alert('Creating Account is not allowed now...'); window.open('/','_self');">Sign Up</a></p>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
